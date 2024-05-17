@@ -21,14 +21,27 @@ public class SpringBookappMongoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception{
 		
+		// insert
 		Book book = new Book();
-		book.setBookId(1);
-		book.setTitle("");
-		book.setAuthor("");
-		book.setCategory("");
-		book.setCost(100.00);
+		book.setBookId(3);
+		book.setTitle("Tecnología");
+		book.setAuthor("Jose");
+		book.setCategory("TICs");
+		book.setCost(200.00);
 		bookService.addBook(book);
-				
+		
+		// get all
+		bookService.getAll().forEach(System.out::println);
+		
+		// find
+		Book nbook = bookService.findById(1);
+		System.out.println(nbook.getAuthor());
+		
+		// update
+		bookService.updateBook(2, 200);
+		
+		// delete
+		bookService.deleteBook(1);		
 	}
 
 }
